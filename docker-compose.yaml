@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+
+  db:
+    image: redis
+    ports:
+      - 6379:6379
+
+  api:
+    build: .
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+
+# sudo docker exec -it dart_docker_postgres_back_end_db_1 bash
+# psql -U postgres
+# SELECT * FROM clientes
