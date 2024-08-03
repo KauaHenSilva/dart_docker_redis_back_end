@@ -2,10 +2,9 @@
 
 sudo docker build -t my_api:latest .
 
-
 # Iniciar um swap localmente
 
-docker swap init
+docker swarm init
 docker stack deploy --compose-file docker-stack.yml SO
 
 # verificar serviço
@@ -15,3 +14,10 @@ docker service ls
 # verificar os node
 
 docker node ls
+
+# clearr
+
+docker stop $(docker ps -q)
+docker rm $(docker ps -aq)
+
+docker swarm join-token worker
