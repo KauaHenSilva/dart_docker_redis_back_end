@@ -12,9 +12,7 @@ services:
 
   api:
     restart: always
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: my_api:latest
     ports:
       - 8080:8080
     depends_on:
@@ -25,4 +23,3 @@ services:
 networks:
   project-network:
     driver: overlay
-
