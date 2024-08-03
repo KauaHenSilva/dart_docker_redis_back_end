@@ -1,9 +1,17 @@
+# Iniciar a imagem do docker api
+
+sudo docker build -t my_api:latest .
+
+
 # Iniciar um swap localmente
 
 docker swap init
-docker docker build -t my_api:latest .
 docker stack deploy --compose-file docker-stack.yml SO
 
 # verificar serviço
 
 docker service ls
+
+# verificar os node
+
+docker node ls

@@ -12,7 +12,7 @@ services:
 
   api:
     restart: always
-    image: my_api:latest
+    image: kauahensilva/my_api:latest
     ports:
       - 8080:8080
     depends_on:
