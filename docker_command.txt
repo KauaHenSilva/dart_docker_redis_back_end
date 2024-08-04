@@ -13,7 +13,11 @@ docker push <your_registry>/<name_image>:latest
 
 # Iniciar um swarm localmente
 
-docker swarm init
+docker swarm init 
+
+ou
+
+docker swarm init --advertise-addr <your-Ip>
 
 # Parar um swarm localmente
 
@@ -51,3 +55,11 @@ docker swarm join-token worker
 # caso venha atualizar a imagem no swarm
 
 docker service update --image <your_registry>/<name_image>:latest <serviceName>
+
+# reload docker
+
+sudo service docker restart 
+
+# promoter
+
+docker node promote
