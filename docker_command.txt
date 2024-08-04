@@ -1,10 +1,26 @@
 # Iniciar a imagem do docker api
 
-sudo docker build -t my_api:latest .
+sudo docker build -t <name_image>:latest .
 
-# Iniciar um swap localmente
+# Login no docker hub
+
+docker login
+
+# adicionar a imagem no docker hub
+
+docker tag <name_image>:latest <your_registry>/<name_image>:latest
+docker push <your_registry>/<name_image>:latest
+
+# Iniciar um swarm localmente
 
 docker swarm init
+
+# Parar um swarm localmente
+
+docker swarm leave
+
+# Deploy desse swarm
+
 docker stack deploy --compose-file docker-stack.yml SO
 
 # verificar serviço
@@ -15,9 +31,23 @@ docker service ls
 
 docker node ls
 
-# clearr
+# clear
 
 docker stop $(docker ps -q)
 docker rm $(docker ps -aq)
 
+docker rmi $(docker images -q)
+docker volume rm $(docker volume ls -q)
+docker network prune -f
+
+# Caso de falha com network
+
+docker network rm project-network
+
+# recuperar token
+
 docker swarm join-token worker
+
+# caso venha atualizar a imagem no swarm
+
+docker service update --image <your_registry>/<name_image>:latest <serviceName>
