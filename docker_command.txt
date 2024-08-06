@@ -23,13 +23,20 @@ docker swarm init --advertise-addr <your-Ip>
 
 docker swarm leave
 
+caso de falha do comando acima
+
+docker swarm leave --force
+
 # Deploy desse swarm
 
-docker stack deploy --compose-file docker-stack.yml SO
+docker stack deploy --compose-file docker-stack.yml <name-project>
 
 # verificar serviço
 
 docker service ls
+
+Ver serviço:
+docker service ps <NAME>
 
 # verificar os node
 
@@ -51,6 +58,7 @@ docker network rm project-network
 # recuperar token
 
 docker swarm join-token worker
+docker swarm join-token manager // Usar caso esteja vazio
 
 # caso venha atualizar a imagem no swarm
 
@@ -62,4 +70,20 @@ sudo service docker restart
 
 # promoter
 
-docker node promote
+docker node promote <NODE>
+
+# utilizar outra maquina
+
+- Maquina 1:
+
+docker swarm init
+ngrok tcp <IP-LOCAL>:2377
+
+- Maquina 2:
+
+nmap <IP-NGROK> -p 2377 // Caso ache deu certo o passo da maquina 1.
+docker swarm join --token <YOUR-TOKEN> <IP-NGROK>:2377
+
+# atualizar imagem para replicas
+
+docker service update --replicas 2 SO_db

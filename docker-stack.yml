@@ -9,6 +9,14 @@ services:
       - 6379:6379
     networks:
       - project-network
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+      placement:
+        preferences:
+          - spread: node.hostname
+    
 
   api:
     restart: always
@@ -19,6 +27,13 @@ services:
       - db
     networks:
       - project-network
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+      placement:
+        preferences:
+          - spread: node.hostname
 
 networks:
   project-network:
