@@ -1,8 +1,6 @@
-# Dart_Flutter_Cookbooks
+# Dart_docker_redis_dack_end
 
-### 🚀 Project Initiative
-
-A project developed in Flutter and Dart to demonstrate knowledge.
+This project is a simple application that demonstrates the use of Dart and Docker. It supports Docker, Docker Compose, and Docker Swarm.
 
 ## ❤️ Contribution
 
