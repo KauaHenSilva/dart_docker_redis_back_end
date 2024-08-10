@@ -1,6 +1,6 @@
 # Dart_docker_redis_dack_end
 
-This project is a simple application that demonstrates the use of Dart and Docker. It supports Docker, Docker Compose, and Docker Swarm.
+This project is a simple application that demonstrates the use of Dart, redis (DataBase) and Docker. It supports Docker, Docker Compose, and Docker Swarm.
 
 ## ❤️ Contribution
 
